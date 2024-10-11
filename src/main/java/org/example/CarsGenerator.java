@@ -1,6 +1,15 @@
 package org.example;
 
+/**
+ * Class responsible for generating an array of Car objects.
+ */
 public class CarsGenerator {
+
+    /**
+     * Generates an array of 10 predefined Car objects.
+     *
+     * @return an array of Car objects.
+     */
     public static Car[] generateCars() {
         Car[] cars = new Car[10];
 
