@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * Main class that demonstrates working with an array of Car objects, sorting them, and comparing them
@@ -24,12 +23,19 @@ public class Main {
         System.out.println("Generated cars:" + Arrays.toString(cars));
 
         // Sort cars by horsepower
-        Arrays.sort(cars, Comparator.comparingInt(Car::getHorsePower));
-        System.out.println("\nCars sorted by power: " + Arrays.toString(cars));
-
-        // Sort cars by year (in reverse order)
-        Arrays.sort(cars, Comparator.comparingInt(Car::getYear).reversed());
-        System.out.println("\nCars sorted by year: " + Arrays.toString(cars));
+        Arrays.sort(cars, (car1, car2) -> {
+            if (car1.getMake().compareTo(car2.getMake()) > 0)
+                return 1;
+            if (car1.getMake().compareTo(car2.getMake()) < 0)
+                return -1;
+            if (car1.getYear() > car2.getYear())
+                return -1;
+            if (car1.getYear() < car2.getYear())
+                return 1;
+            return 0;
+        });
+        System.out.println("\nSorted cars: ");
+        Arrays.stream(cars).forEach(System.out::println);
 
         // Find and print cars that match the predefined one
         System.out.println("\nCars that are equal to the predefined one:");
