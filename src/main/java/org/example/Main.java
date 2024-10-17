@@ -22,7 +22,6 @@ public class Main {
         Car[] cars = CarsGenerator.generateCars();
         System.out.println("Generated cars:" + Arrays.toString(cars));
 
-        // Sort cars by horsepower
         Arrays.sort(cars, (car1, car2) -> {
             if (car1.getMake().compareTo(car2.getMake()) > 0)
                 return 1;
@@ -37,7 +36,6 @@ public class Main {
         System.out.println("\nSorted cars: ");
         Arrays.stream(cars).forEach(System.out::println);
 
-        // Find and print cars that match the predefined one
         System.out.println("\nCars that are equal to the predefined one:");
         for (Car car : cars) {
             if (car.equals(CAR_TO_COMPARE))
